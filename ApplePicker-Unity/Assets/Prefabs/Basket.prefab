@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4080058385876383992}
   - component: {fileID: 2300104577304467142}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 8761300493039233339}
   - component: {fileID: 5038812058313348992}
   - component: {fileID: 236183597361230296}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}

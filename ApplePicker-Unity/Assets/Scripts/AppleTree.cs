@@ -4,7 +4,7 @@
 * Date Created: 1/31/2022
 *
 * Last Edited By Cristian Misla
-* Last Edited: 1/31/2022
+* Last Edited: 2/2/2022
 * 
 * Description: Movement script for the AppleTree
 ***/
@@ -28,8 +28,15 @@ public class AppleTree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("DropApple", 2f); //Calls DropApple() 
     }
+
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", secondsBetweenAppleDrops);
+    } //end DropApple()
 
     // Update is called once per frame
     void Update()
