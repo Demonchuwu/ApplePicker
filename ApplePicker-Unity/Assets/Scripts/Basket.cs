@@ -4,20 +4,29 @@
 * Date Created: 1/31/2022
 *
 * Last Edited By Cristian Misla
-* Last Edited: 2/2/2022
+* Last Edited: 2/7/2022
 * 
 * Description: Movement script for the Basket
 ***/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;//using UI libraries
 
 public class Basket : MonoBehaviour
 {
+    [Header("Set Dynamically")]
+    public Text scoreGT;
+    //public GameObject score; Another way to call an object, but it doesn't work this way due to the code being on an object that isn't placed yet.
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject scoreGO = GameObject.Find("ScoreCounter"); //Score game object
+        scoreGT = scoreGO.GetComponent<Text>(); //The text component of the score GO 
+        scoreGT.text = "0"; //Set the text property
     }
 
     // Update is called once per frame
@@ -36,6 +45,11 @@ public class Basket : MonoBehaviour
         if(collidedWith.tag == "Apple")
             {
             Destroy(collidedWith);
-        }//end of if()
+
+            int score = int.Parse(scoreGT.text);
+            score += 100;
+            scoreGT.text = score.ToString();
+
+        }//end of if(collidedWith.tag == "Apple")
     }//end of OnCollisionEnter()
 }
