@@ -4,13 +4,14 @@
 * Date Created: 1/31/2022
 *
 * Last Edited By Cristian Misla
-* Last Edited: 2/2/2022
+* Last Edited: 2/7/2022
 * 
 * Description: Game Manager for ApplePicker
 ***/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApplePicker : MonoBehaviour
 {
@@ -31,11 +32,20 @@ public class ApplePicker : MonoBehaviour
             pos.y = basketBottomY + (basketSpacingY * i);
             tBasketGO.transform.position = pos;
         }//end of for()
-    }//end of Start()
+    }//end Start()
 
     // Update is called once per frame
     void Update()
     {
-        
-    }//end of Update()
+    }//end Update()
+
+    public void AppleDestroyed()
+    {
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+        foreach(GameObject tGo in tAppleArray)
+        {
+            Destroy(tGo);
+        }//end foreach
+    }//end AppleDestroyed()
+
 }

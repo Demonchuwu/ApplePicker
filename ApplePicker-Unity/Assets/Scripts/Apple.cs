@@ -4,7 +4,7 @@
 * Date Created: 1/31/2022
 *
 * Last Edited By Cristian Misla
-* Last Edited: 2/2/2022
+* Last Edited: 2/7/2022
 * 
 * Description: Script for the Apple Prefab
 ***/
@@ -28,6 +28,7 @@ public class Apple : MonoBehaviour
         if ( transform.position.y < bottomY)
         {
             Destroy(this.gameObject);
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
         }
     }
 }
