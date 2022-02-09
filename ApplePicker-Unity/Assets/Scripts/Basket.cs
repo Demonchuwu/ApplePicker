@@ -4,7 +4,7 @@
 * Date Created: 1/31/2022
 *
 * Last Edited By Cristian Misla
-* Last Edited: 2/7/2022
+* Last Edited: 2/8/2022
 * 
 * Description: Movement script for the Basket
 ***/
@@ -49,6 +49,11 @@ public class Basket : MonoBehaviour
             int score = int.Parse(scoreGT.text);
             score += 100;
             scoreGT.text = score.ToString();
+
+            if(score > HighScore.score)
+            {
+                HighScore.score = score;
+            }
 
         }//end of if(collidedWith.tag == "Apple")
     }//end of OnCollisionEnter()
