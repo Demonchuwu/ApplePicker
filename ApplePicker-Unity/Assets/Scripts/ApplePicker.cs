@@ -4,7 +4,7 @@
 * Date Created: 1/31/2022
 *
 * Last Edited By Cristian Misla
-* Last Edited: 2/7/2022
+* Last Edited: 2/8/2022
 * 
 * Description: Game Manager for ApplePicker
 ***/
@@ -20,32 +20,40 @@ public class ApplePicker : MonoBehaviour
     public int numBaskets = 3;
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
+    public List<GameObject> basketList;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       for(int i=0; i<numBaskets; i++)
+        basketList = new List<GameObject>();
+        for (int i=0; i<numBaskets; i++)
         {
             GameObject tBasketGO = Instantiate<GameObject>(basketPrefab);
             Vector3 pos = Vector3.zero;
             pos.y = basketBottomY + (basketSpacingY * i);
             tBasketGO.transform.position = pos;
+            basketList.Add(tBasketGO);
         }//end of for()
     }//end Start()
 
-    // Update is called once per frame
-    void Update()
-    {
-    }//end Update()
-
     public void AppleDestroyed()
     {
+        // Destroy all of the falling apples
         GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
-        foreach(GameObject tGo in tAppleArray)
+        foreach (GameObject tGO in tAppleArray)
         {
-            Destroy(tGo);
-        }//end foreach
-    }//end AppleDestroyed()
+            Destroy(tGO);
+        }
+
+        // Destroy one of the baskets                                      // e
+        // Get the index of the last Basket in basketList
+        int basketIndex = basketList.Count - 1;
+        // Get a reference to that Basket GameObject
+        GameObject tBasketGO = basketList[basketIndex];
+        // Remove the Basket from the list and destroy the GameObject
+        basketList.RemoveAt(basketIndex);
+        Destroy(tBasketGO);
+    }
 
 }
